@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Catgory = () => {
+const Category = () => {
   return (
     <div>
       <h1>Categoria</h1>
@@ -8,4 +8,4 @@ const Catgory = () => {
   )
 }
 
-export default Catgory
+export default Category
