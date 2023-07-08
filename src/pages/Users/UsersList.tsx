@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';
 
@@ -20,6 +21,8 @@ const UsersList = () => {
         <div key={user.id}>
           <h2>{user.name}</h2>
           <img src={user.avatar} alt="avatar del usuario" />
+          <br />
+          <Link to={`/users/${user.id}`}> Mas detalles</Link>
         </div>
       ))}
     </div>
