@@ -67,3 +67,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.container-content{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+}

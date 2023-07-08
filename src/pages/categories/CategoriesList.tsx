@@ -15,7 +15,7 @@ const CategoriesList = () => {
   }
 
   return (
-    <div>
+    <div className='container-content'>
       <h1>Categorias</h1>
       {data?.map((category) => (
         <div key={category.id}>

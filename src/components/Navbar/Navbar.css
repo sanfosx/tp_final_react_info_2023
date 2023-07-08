@@ -4,7 +4,6 @@
     left: 0;
     width: 100%;
     background-color: black;
-    padding: 5px;
     z-index: 9999;
   }
 
@@ -41,7 +40,7 @@
    list-style-type: none;
 }
 
-p{
+.p-nav{
     color: white;
     margin-left: 5px;
 }

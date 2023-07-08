@@ -8,7 +8,7 @@ function Navbar() {
         <Link to='./'>
           <img src='../../../public/img/e-commerceLogo.jpg' alt="" className="logo-img" />
         </Link>
-        <p>E-Commerce App</p>
+        <p className='p-nav'>E-Commerce App</p>
       </div>
 
       <ul className="content-links">

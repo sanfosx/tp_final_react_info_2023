@@ -14,7 +14,7 @@ const UsersList = () => {
   }
 
   return (
-    <div>
+    <div className='container-content'>
       <h1>Listado de Usuarios</h1>
       {data?.map((user) => (
         <div key={user.id}>

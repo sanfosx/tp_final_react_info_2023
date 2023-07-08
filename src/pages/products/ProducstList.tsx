@@ -14,7 +14,7 @@ const ProducstList = () => {
   }
 
   return (
-    <div>
+    <div className='container-content'>
       <h1>Lista de Productos</h1>
       {data?.map((product) => (
         <div key={product.id}>
