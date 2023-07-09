@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Category from '../categories/Category';
 import { useQuery} from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';
 
@@ -20,10 +20,7 @@ const CategoriesList = () => {
       <h1>Categorias</h1>
       {data?.map((category) => (
         <div key={category.id}>
-          <h2>{category.name}</h2>
-          <img src={category.image} alt="imagen de la categoria" />
-          <br/>
-          <Link to={`/categories/${category.id}`}> Ver productos</Link>
+          <Category category={category}></Category>
         </div>
       ))}
     </div>

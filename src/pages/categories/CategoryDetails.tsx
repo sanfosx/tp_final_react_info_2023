@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { useQuery} from 'react-query';
+import { useQuery } from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';
+
 
 const CategoryDetails = () => {
   const { id } = useParams()

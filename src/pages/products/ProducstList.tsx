@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { useQuery } from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';
+import Product from './Product';
 
 const ProducstList = () => {
   const { data, isLoading, isError, error } = useQuery('Products', () => PlatziAPI('products'));
-  
+
 
   if (isLoading) {
     return <div>Cargando...</div>;
@@ -18,15 +18,13 @@ const ProducstList = () => {
   return (
     <div className='container-content'>
       <h1>Lista de Productos</h1>
+
       {data?.map((product) => (
         <div key={product.id}>
-          <h2>{product.title}</h2>
-          <h3>$ {product.price}</h3>
-          <p>{product.description}</p>
-          <Link to={`/products/${product.id}`}> Mas detalles</Link>
-          
+          <Product product={product}></Product>
         </div>
       ))}
+
     </div>
   );
 }

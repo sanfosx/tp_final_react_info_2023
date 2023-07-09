@@ -20,7 +20,7 @@ const UserDetails = () => {
     <div className='container-content'>
       
       {data? 
-        <div key={data.id}>
+        <div key={data.id} >
           <h1>{data.id}-{data.name}</h1>
           <img src={data.avatar} alt="avatar del usuario" />
           <br />
