@@ -13,7 +13,7 @@ const UserDetails = () => {
   }
 
   if (isError) {
-    return <div>Error: {error?}</div>;
+    return <div>Error: {error}</div>;
   }
 
   return (
