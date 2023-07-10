@@ -6,7 +6,7 @@ function Navbar() {
     <div className="navbar navbar-container">
       <div className="logo-content">
         <Link to='./'>
-          <img src='../../../public/img/e-commerceLogo.jpg' alt="" className="logo-img" />
+          <img src='/img/e-commerceLogo.jpg' alt="" className="logo-img" />
         </Link>
         <p className='p-nav'>E-Commerce App</p>
       </div>
