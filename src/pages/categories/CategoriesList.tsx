@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Category from '../categories/Category';
 import { useQuery} from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';

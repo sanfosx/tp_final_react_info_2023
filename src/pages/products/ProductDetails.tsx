@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';

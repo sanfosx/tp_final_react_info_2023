@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from 'react-query';
-import App from './App.tsx'
 import './index.css'
 import Home from './pages/home/Home.js'
 import Login from './pages/Auth/login/Login.js'
