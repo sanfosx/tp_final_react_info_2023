@@ -14,7 +14,7 @@ const ProductDetails = () => {
   }
 
   if (isError) {
-    return <div>Error: {error?.message}</div>;
+    return <div>Error: {error}</div>;
   }
 
   return (

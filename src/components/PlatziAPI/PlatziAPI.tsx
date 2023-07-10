@@ -1,4 +1,4 @@
-const PlatziAPI= async (url: string, id: string = null) => {
+const PlatziAPI= async (url: string, id: number = null) => {
 
   if (id !==null) {
       const response = await fetch(`https://api.escuelajs.co/api/v1/${url}/${id}`);
