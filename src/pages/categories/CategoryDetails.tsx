@@ -1,5 +1,5 @@
 
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useLocation } from 'react-router-dom'
 import { useQuery } from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';
 
@@ -7,6 +7,8 @@ import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';
 const CategoryDetails = () => {
   const { id } = useParams()
   const { data, isLoading, isError, error } = useQuery('Categories', () => PlatziAPI(`categories/${id}/products`));
+
+  const{ state }= useLocation()
 
   if (isLoading) {
     return <div>Cargando...</div>;
@@ -18,7 +20,7 @@ const CategoryDetails = () => {
 
   return (
     <div className='container-content'>
-      <h1>Lista de Productos de la categoria {id} </h1>
+      <h1>Categoria {state.categoryName} </h1>
       {data?.map((product) => (
         <div key={product.id}>
           <h2>{product.title}</h2>
