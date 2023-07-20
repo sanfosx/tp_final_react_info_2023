@@ -65,6 +65,8 @@ const Login = () => {
         </label>{" "}
         <button type="submit">{signinMutation.isLoading ? 'Cargando' : 'Login'}</button>
       </form>
+      <br />
+      <button onClick={() => navigate('/register')}>Registrarse</button>
     </div>
   );
 
