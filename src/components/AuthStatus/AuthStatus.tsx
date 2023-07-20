@@ -8,23 +8,26 @@ export default function AuthStatus() {
   let auth = useAuth();
   let navigate = useNavigate();
 
-  if (!auth.user) {
-    return <li><Link to='./login'>Login</Link></li>;
+ let user = localStorage.getItem('ACCESS_TOKEN')
+  
+  if (user) {
+    return (
+      <div>
+      <p>
+        Welcome {auth.userProfile && auth.userProfile.name}!{" "}
+      </p>
+       <button
+       onClick={() => {
+         auth.signout(() => navigate("/"));
+       }}
+     >
+       Sign out
+     </button>
+     </div>
+    );
+   
   }
-
-  return (
-    <div>
-    <p>
-      Welcome {auth.user}!{" "}
-    </p>
-     <button
-     onClick={() => {
-       auth.signout(() => navigate("/"));
-     }}
-   >
-     Sign out
-   </button>
-   </div>
-  );
+  return <li><Link to='./login'>Login</Link></li>;
+  
 }
 
