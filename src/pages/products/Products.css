@@ -40,12 +40,18 @@
 .card-products-list{
     border: solid 1px blueviolet;
     margin: 1rem;
+    position: relative;
 }
 
 .card-product-container{
     width: 20rem;
     height: 35rem;
     text-overflow: ellipsis;
+}
+
+.card-product-container:hover .card-product-actions{
+    display: flex;
+    justify-content: space-around;
 }
 
 .product-description{
@@ -57,4 +63,19 @@
 .card-product-title{
     height: 2rem;
     overflow: hidden;
+}
+
+.card-product-actions{
+    position: absolute;
+    width: 94%;
+    top: 0;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    display: none;
+}
+
+.product-icon{
+    color:white;
+    font-size: 20px;
 }
