@@ -5,7 +5,7 @@ import AuthStatus from '../AuthStatus/AuthStatus'
 
 function Navbar() {
   return (
-    <div className="navbar navbar-container">
+    <div className="navbarr navbar-container">
       <div className="logo-content">
         <Link to='./'>
           <img src='./img/e-commerceLogo.jpg' alt="" className="logo-img" />

@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer'
 
 function Layout() {
   return (
-    <div>
+    <div classNmane="container-fluid">
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>

@@ -21,6 +21,9 @@ const UsersList = () => {
         <div key={user.id}>
           <h2>{user.name}</h2>
           <img src={user.avatar} alt="avatar del usuario" />
+          <p>{user.email}</p>
+          <p>{user.role}</p>
+
           <br />
           <Link to={`/users/${user.id}`}> Mas detalles</Link>
         </div>
