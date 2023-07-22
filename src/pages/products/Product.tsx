@@ -11,7 +11,7 @@ const Product = ({ product }) => {
       <img className="product-img" src={product.images[0]} alt=""></img>
       <div className="">
         <div className="card-product-actions">
-          <Link className="product-icon"> <BsPencilSquare/></Link>
+          <Link className="product-icon" to={`/products/${product.id}/edit`}> <BsPencilSquare/></Link>
           <Link className="product-icon"><BsFillTrash3Fill/></Link>
         </div>
         <h2 className="card-product-title">{product.title}</h2>

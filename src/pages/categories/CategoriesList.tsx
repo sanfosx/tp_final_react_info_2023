@@ -1,8 +1,8 @@
-
 import Category from '../categories/Category';
 import { useQuery } from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';
 import './Categories.css'
+
 const CategoriesList = () => {
 
   const { data, isLoading, isError, error } = useQuery('Categories', () => PlatziAPI('categories'));
