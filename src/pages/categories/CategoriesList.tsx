@@ -1,11 +1,18 @@
 import Category from '../categories/Category';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';
+import { useDeleteData } from '../../components/PlatziAPI/PlatziAPI';
 import './Categories.css'
 
 const CategoriesList = () => {
+  const { data, isLoading, isError, error, refetch } = useQuery('Categories', () => PlatziAPI('categories'));
+  const deleteCategoryMutation = useDeleteData();
+  const handleDeleteCategory = async (categoryId: number) => {
+    await deleteCategoryMutation.mutateAsync(`categories/${categoryId}`); // Usar mutacion asincrona
 
-  const { data, isLoading, isError, error } = useQuery('Categories', () => PlatziAPI('categories'));
+    // Después de eliminar, volver a cargar los datos
+    refetch();
+  };
 
   if (isLoading) {
     return <div>Cargando...</div>;
@@ -23,12 +30,11 @@ const CategoriesList = () => {
       <div className='category-list-content'>
         {data?.map((category) => (
           <div className="card-category-list" key={category.id}>
-            <Category category={category}></Category>
+            <Category category={category} onDeleteCategory={handleDeleteCategory}></Category>
           </div>
         ))}
       </div>
     </div>
-
   );
 }
 

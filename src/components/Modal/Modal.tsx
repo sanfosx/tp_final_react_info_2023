@@ -1,6 +1,6 @@
 import { useEffect, ReactNode } from 'react';
 import { createPortal } from 'react-dom';
-import { useDeleteProduct } from '../PlatziAPI/PlatziAPI';
+import { useDeleteData } from '../PlatziAPI/PlatziAPI';
 import { useQueryClient } from 'react-query'; // Importamos useQueryClient
 import './Modal.css';
 
@@ -14,7 +14,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
   const modalRoot = document.getElementById('modal-portal')!;
   const queryClient = useQueryClient(); // Obtenemos el queryClient desde el hook useQueryClient
 
-  const deleteProductMutation = useDeleteProduct(queryClient);
+  const deleteProductMutation = useDeleteData(queryClient);
 
 
 

@@ -2,18 +2,18 @@ import {useState} from 'react'
 import { useQuery, useQueryClient, useMutation } from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';
 import Product from './Product';
-import { removeData, useDeleteProduct} from '../../components/PlatziAPI/PlatziAPI';
+import { useDeleteData} from '../../components/PlatziAPI/PlatziAPI';
 import Modal from '../../components/Modal/Modal';
 import './Products.css'
 
 const ProducstList = () => {
   const { data, isLoading, isError, error, refetch } = useQuery('products', () => PlatziAPI('products'));
 
-  const deleteProductMutation = useDeleteProduct();
+  const deleteProductMutation = useDeleteData();
 
 
   const handleDeleteProduct = async (productId: number) => {
-    await deleteProductMutation.mutateAsync(productId); // Usar mutacion asincrona
+    await deleteProductMutation.mutateAsync(`products/${productId}`); // Usar mutacion asincrona
 
     // Después de eliminar, volver a cargar los datos
     refetch();

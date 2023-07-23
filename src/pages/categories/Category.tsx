@@ -7,18 +7,12 @@ import { BsFillTrash3Fill, BsPencilSquare } from "react-icons/bs";
 import { removeData } from '../../components/PlatziAPI/PlatziAPI';
 
 
-const Category = ({ category }) => {
-
-  const client = useQueryClient();
-
-  const removeDataMutation = useMutation(removeData, {
-    onSuccess: () => {
-      client.invalidateQueries('categories'); // Invalida la caché para actualizar los datos
-      setShowModal(false)
-    },
-  });
-
+const Category = ({ category, onDeleteCategory }) => {
   const [showModal, setShowModal] = useState(false);
+  const handleDeleteClick = () => {
+    onDeleteCategory(category.id);
+    closeModal()
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -27,15 +21,6 @@ const Category = ({ category }) => {
   const closeModal = () => {
     setShowModal(false);
   };
-
-  const deleteCategory = (id:string) =>{
-    removeDataMutation.mutate(`categories/${id}`);
-    console.log('asdfsdf',id)
-    
-  }
-
-  
-  
 
   return (
     <>
@@ -52,10 +37,7 @@ const Category = ({ category }) => {
         <h2>Estas Seguro?</h2>
         <p>Esta accion no se puede revertir</p>
         <button onClick={closeModal}>Cancelar</button>
-        <button onClick={()=>deleteCategory(category.id)}>{removeDataMutation.isLoading?'Eliminando': 'Eliminar'}</button>
-       { console.log(category.id)}
-        {/* Puedes pasar cualquier componente como contenido */}
-        {/* <CustomComponent onClose={closeModal} /> */}
+        <button onClick={handleDeleteClick}>{onDeleteCategory.isLoading ? 'Eliminando...' : 'Eliminar'}</button>
       </Modal>
     </>
   )
