@@ -1,12 +1,23 @@
-
-import { useQuery } from 'react-query';
+import {useState} from 'react'
+import { useQuery, useQueryClient, useMutation } from 'react-query';
 import PlatziAPI from '../../components/PlatziAPI/PlatziAPI';
 import Product from './Product';
+import { removeData, useDeleteProduct} from '../../components/PlatziAPI/PlatziAPI';
+import Modal from '../../components/Modal/Modal';
 import './Products.css'
 
 const ProducstList = () => {
-  const { data, isLoading, isError, error } = useQuery('Products', () => PlatziAPI('products'));
+  const { data, isLoading, isError, error, refetch } = useQuery('products', () => PlatziAPI('products'));
 
+  const deleteProductMutation = useDeleteProduct();
+
+
+  const handleDeleteProduct = async (productId: number) => {
+    await deleteProductMutation.mutateAsync(productId); // Usar mutacion asincrona
+
+    // Después de eliminar, volver a cargar los datos
+    refetch();
+  };
 
   if (isLoading) {
     return <div>Cargando...</div>;
@@ -18,7 +29,6 @@ const ProducstList = () => {
 
   return (
     <div className='product-list-container'>
-
       <div className="product-list-title">
         <h1>Lista de Productos</h1>
       </div>
@@ -29,13 +39,11 @@ const ProducstList = () => {
         <div className="cards-content-product-list">
           {data?.map((product) => (
             <div className="card-products-list" key={product.id}>
-              <Product product={product}></Product>
+              <Product product={product} onDeleteProduct={handleDeleteProduct} ></Product>
             </div>
           ))}
         </div>
       </div>
-
-
     </div>
   );
 }

@@ -26,6 +26,7 @@ import ShippingCheckout from './pages/Checkouts/ShippingCheckout.js'
 import PaymentCheckout from './pages/Checkouts/PaymentCheckout.js'
 import AuthProvider from './contexts/AuthContext/AuthContext'
 import RequireAuth from './components/RequireAuth/RequireAuth'
+import Modal from './components/Modal/Modal'
 
 
 
@@ -38,7 +39,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/products" element={<ProducstList />}></Route>
+          <Route path="/products" element={<ProducstList/>}></Route>
           <Route path="/products/:id" element={<ProductDetails />}></Route>
           <Route path="/categories" element={<CategoriesList />}></Route>
           <Route path="/categories/:id" element={<CategoryDetails />}></Route>
@@ -67,6 +68,7 @@ function App() {
           <Route path="*" element={<NotFound />}></Route>
         </Route>
       </Routes>
+      
     </AuthProvider>
 
   )
