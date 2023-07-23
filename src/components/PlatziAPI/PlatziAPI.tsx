@@ -14,6 +14,19 @@ export const useDeleteData = () => {
   );
 };
 
+export const useCreateData = () => {
+  const queryClient = useQueryClient();
+  return useMutation(
+    (newData: { name: string; image: string }) => axios.post(`${API_BASE_URL}categories/`, newData),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('categories'); // Invalida la caché para actualizar los datos
+       
+      },
+    }
+  );
+};
+
 const PlatziAPI = async (url: string, id: number = null) => {
   if (id !== null) {
     const response = await fetch(`${API_BASE_URL + url}/${id}`);

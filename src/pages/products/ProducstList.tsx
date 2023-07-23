@@ -34,7 +34,7 @@ const ProducstList = () => {
       </div>
       <div className="product-list-content">
         <div className="product-list-filter">
-          <p>filter</p>
+          <h2>FILTROS</h2>
         </div>
         <div className="cards-content-product-list">
           {data?.map((product) => (
