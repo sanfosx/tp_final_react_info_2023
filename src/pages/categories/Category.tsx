@@ -1,12 +1,22 @@
 
 import {useState} from 'react'
-import {useMutation} from 'react-query'
+import {useMutation, useQueryClient} from 'react-query'
 import Modal from '../../components/Modal/Modal';
 import { Link } from 'react-router-dom'
 import { BsFillTrash3Fill, BsPencilSquare } from "react-icons/bs";
+import { removeCategory } from '../../components/PlatziAPI/PlatziAPI';
 
 
 const Category = ({ category }) => {
+
+  const queryClient = useQueryClient();
+
+  const removeCategoryMutation = useMutation(removeCategory, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('categories'); // Invalida la caché para actualizar los datos
+      setShowModal(false)
+    },
+  });
 
   const [showModal, setShowModal] = useState(false);
 
@@ -18,12 +28,13 @@ const Category = ({ category }) => {
     setShowModal(false);
   };
 
-  const deleteCategory = (id) =>{
-   
-    setShowModal(false)
+  const deleteCategory = (id:number) =>{
+    removeCategoryMutation.mutate(id);
+    console.log('asdfsdf',id)
+    
   }
 
-
+  
   
 
   return (
@@ -41,7 +52,8 @@ const Category = ({ category }) => {
         <h2>Estas Seguro?</h2>
         <p>Esta accion no se puede revertir</p>
         <button onClick={closeModal}>Cancelar</button>
-        <button onClick={deleteCategory}>Eliminar</button>
+        <button onClick={()=>deleteCategory(category.id)}>{removeCategoryMutation.isLoading?'Eliminando': 'Eliminar'}</button>
+       { console.log(category.id)}
         {/* Puedes pasar cualquier componente como contenido */}
         {/* <CustomComponent onClose={closeModal} /> */}
       </Modal>
